@@ -8,6 +8,7 @@ import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -17,19 +18,30 @@ import org.bukkit.persistence.PersistentDataType;
 
 import java.util.ArrayList;
 
+import static me.jqrtox.rpg.Collection.CollectionGUI.createCollectionGUI;
 import static me.jqrtox.rpg.Main.StringUtils.Format;
 import static me.jqrtox.rpg.Main.StringUtils.capitalizeFirstLetter;
 
-public class ForageCollectionGui {
+public class ForageCollectionGui implements Listener {
 
     public static void woodCollectionGui(Player p){
 
-        Inventory inv = Bukkit.createInventory(p, 54, Util.cc("&e&lWood Colllections"));
+        Inventory inv = Bukkit.createInventory(p, 54, Util.cc("&e&lWood Collections"));
 
         ItemStack fillup = new ItemStack(Material.BLACK_STAINED_GLASS_PANE);
         ItemMeta fillupMeta = fillup.getItemMeta();
         fillupMeta.setDisplayName(Util.cc("&a"));
         fillup.setItemMeta(fillupMeta);
+
+        ItemStack backSlot = new ItemStack(Material.BARRIER);
+        ItemMeta backMeta = backSlot.getItemMeta();
+        backMeta.setDisplayName(Util.cc("&c&lGo Back"));
+        ArrayList backLore = new ArrayList();
+        backLore.add(Util.cc("&a"));
+        backLore.add(Util.cc("&7Click to go back"));
+        backLore.add(Util.cc("&a"));
+        backMeta.setLore(backLore);
+        backSlot.setItemMeta(backMeta);
 
         for (int i = 0; i < 9; i++) {
 
@@ -59,6 +71,7 @@ public class ForageCollectionGui {
         woodCollectionSlots(p, "acacia", inv, 12, Material.ACACIA_LOG);
         woodCollectionSlots(p, "spruce", inv, 13, Material.SPRUCE_LOG);
         woodCollectionSlots(p, "jungle", inv, 14, Material.JUNGLE_LOG);
+        inv.setItem(49, backSlot);
         p.openInventory(inv);
 
     }
@@ -94,6 +107,7 @@ public class ForageCollectionGui {
         hiddenMeta.setLore(hiddenLore);
         hiddenSlot.setItemMeta(hiddenMeta);
 
+
         if (col > 0) {
             inv.setItem(slot, slotItem);
         }else{
@@ -101,12 +115,16 @@ public class ForageCollectionGui {
         }
     }
     @EventHandler
-    private void onClick(InventoryClickEvent e){
+    public void onClick(InventoryClickEvent e){
 
         Player p = (Player) e.getWhoClicked();
 
-        if (e.getView().getTitle().equalsIgnoreCase("Wood Collections")) {
+        if (e.getView().getTitle().equals(Util.cc("&e&lWood Collections"))) {
+
             e.setCancelled(true);
+            if (e.getClick().isLeftClick() && e.getSlot() == 49) {
+                createCollectionGUI(p);
+            }
 
         }
     }

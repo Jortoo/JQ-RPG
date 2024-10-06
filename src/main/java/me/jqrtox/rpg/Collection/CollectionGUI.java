@@ -26,6 +26,12 @@ public class CollectionGUI implements CommandExecutor, Listener {
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
 
         if (sender instanceof Player p) {
+
+            createCollectionGUI(p);
+        }
+        return true;
+    }
+        public static void createCollectionGUI(Player p){
             Inventory collections = Bukkit.createInventory(p, 27, Util.cc("&e&lCollections"));
             ItemStack fillup = new ItemStack(Material.BLACK_STAINED_GLASS_PANE);
             ItemMeta fillupMeta = fillup.getItemMeta();
@@ -54,8 +60,6 @@ public class CollectionGUI implements CommandExecutor, Listener {
             collections.setItem(10, woodCollection);
 
             p.openInventory(collections);
-        }
-        return true;
     }
 
     @EventHandler
