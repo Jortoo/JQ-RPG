@@ -1,8 +1,0 @@
-name: RPG
-version: '1.0-SNAPSHOT'
-main: me.jqrtox.rpg.RPG
-api-version: '1.20'
-commands:
-  collections:
-    description: "Open Collection Menu"
-    usage: "/collections"
