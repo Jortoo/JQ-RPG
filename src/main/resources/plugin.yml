@@ -6,3 +6,6 @@ commands:
   collections:
     description: "Open Collection Menu"
     usage: "/collections"
+  sell:
+    description: "Open sell Gui"
+    usage: "/sell"

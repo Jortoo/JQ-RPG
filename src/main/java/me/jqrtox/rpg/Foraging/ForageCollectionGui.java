@@ -19,6 +19,7 @@ import org.bukkit.persistence.PersistentDataType;
 import java.util.ArrayList;
 
 import static me.jqrtox.rpg.Collection.CollectionGUI.createCollectionGUI;
+import static me.jqrtox.rpg.Main.CommonButtons.backButton;
 import static me.jqrtox.rpg.Main.StringUtils.Format;
 import static me.jqrtox.rpg.Main.StringUtils.capitalizeFirstLetter;
 
@@ -32,16 +33,6 @@ public class ForageCollectionGui implements Listener {
         ItemMeta fillupMeta = fillup.getItemMeta();
         fillupMeta.setDisplayName(Util.cc("&a"));
         fillup.setItemMeta(fillupMeta);
-
-        ItemStack backSlot = new ItemStack(Material.BARRIER);
-        ItemMeta backMeta = backSlot.getItemMeta();
-        backMeta.setDisplayName(Util.cc("&c&lGo Back"));
-        ArrayList backLore = new ArrayList();
-        backLore.add(Util.cc("&a"));
-        backLore.add(Util.cc("&7Click to go back"));
-        backLore.add(Util.cc("&a"));
-        backMeta.setLore(backLore);
-        backSlot.setItemMeta(backMeta);
 
         for (int i = 0; i < 9; i++) {
 
@@ -71,7 +62,7 @@ public class ForageCollectionGui implements Listener {
         woodCollectionSlots(p, "acacia", inv, 12, Material.ACACIA_LOG);
         woodCollectionSlots(p, "spruce", inv, 13, Material.SPRUCE_LOG);
         woodCollectionSlots(p, "jungle", inv, 14, Material.JUNGLE_LOG);
-        inv.setItem(49, backSlot);
+        inv.setItem(49, backButton());
         p.openInventory(inv);
 
     }
