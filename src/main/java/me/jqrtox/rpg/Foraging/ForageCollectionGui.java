@@ -103,8 +103,11 @@ public class ForageCollectionGui {
     @EventHandler
     private void onClick(InventoryClickEvent e){
 
+        Player p = (Player) e.getWhoClicked();
+
         if (e.getView().getTitle().equalsIgnoreCase("Wood Collections")) {
             e.setCancelled(true);
+
         }
     }
 
