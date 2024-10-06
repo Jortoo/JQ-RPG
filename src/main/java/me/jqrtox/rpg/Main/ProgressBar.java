@@ -8,7 +8,6 @@ public class ProgressBar {
     public static String progressBar(Double i1, Double i2){
 
         Double percent = (double) ((i1 / i2) * 100);
-        Bukkit.broadcastMessage(percent+"");
         if (percent >= 99) {
             return Util.cc("&2&m                    ");
         }else if(percent >= 95){
