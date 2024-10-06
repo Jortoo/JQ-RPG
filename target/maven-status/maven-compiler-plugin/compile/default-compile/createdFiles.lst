@@ -8,6 +8,7 @@ me\jqrtox\rpg\Collection\CollectionGUI.class
 me\jqrtox\rpg\Collection\CollectionLevelupMessage.class
 me\jqrtox\rpg\Contianers\Containers.class
 me\jqrtox\rpg\Main\Prefixes.class
+me\jqrtox\rpg\Selling\SellingGUI.class
 me\jqrtox\rpg\Collection\CollectionLevel.class
 me\jqrtox\rpg\Foraging\ForageItems.class
 me\jqrtox\rpg\Main\DelayedTask.class
